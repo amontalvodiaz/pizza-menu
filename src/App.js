@@ -97,7 +97,7 @@ function Pizza({ pizzaType }) {
 
 function Footer() {
   const hour = new Date().getHours();
-  const openHour = 8;
+  const openHour = 12;
   const closeHour = 22;
   const isOpen = hour >= openHour && hour <= closeHour;
   console.log(isOpen);
@@ -106,7 +106,12 @@ function Footer() {
   //else alert("Sorry, we're closed");
   return (
     <footer className="footer">
-      {new Date().toLocaleDateString()}. We're currently open
+      {isOpen && (
+        <div className="order">
+          <p>We're open until {closeHour}:00. Come visit us or order online.</p>
+          <button className="btn">order</button>
+        </div>
+      )}
     </footer>
   );
 }
