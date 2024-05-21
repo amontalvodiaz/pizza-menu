@@ -71,13 +71,27 @@ function Header() {
 }
 
 function Menu() {
+  const pizzas = pizzaData.map((pizza) => (
+    <Pizza pizzaType={pizza} key={pizza.name} />
+  ));
   return (
     <main className="menu">
       <h2>Our menu</h2>
-      <Pizza />
-      <Pizza />
-      <Pizza />
+      <ul className="pizzas">{pizzas}</ul>
     </main>
+  );
+}
+
+function Pizza({ pizzaType }) {
+  return (
+    <li className="pizza">
+      <img src={pizzaType.photoName} alt={pizzaType.name} />
+      <div>
+        <h3>{pizzaType.name}</h3>
+        <p>{pizzaType.ingredients}</p>
+        <span>{pizzaType.price}</span>
+      </div>
+    </li>
   );
 }
 
@@ -94,16 +108,6 @@ function Footer() {
     <footer className="footer">
       {new Date().toLocaleDateString()}. We're currently open
     </footer>
-  );
-}
-
-function Pizza() {
-  return (
-    <div>
-      <img src="pizzas/prosciutto.jpg" alt="Pizza Prosciutto" />
-      <h3>Pizza Prosciutto</h3>
-      <p>Tomato, mozarella, ham, aragula, and burrata cheese</p>
-    </div>
   );
 }
 
